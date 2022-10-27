@@ -3,7 +3,7 @@
 This project is created based on online education. Here they teach web development. This is a fullstack website. Both server side and client side is available here.
 
 ## Live links
-
+- Name: Go Pro
 - Live client side link: https://go-pro-9a816.web.app/
 - Live server side link: https://go-pro-server.vercel.app
 
