@@ -9,6 +9,7 @@ import {
   signInWithEmailAndPassword,
   GithubAuthProvider,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 export const AuthContext = createContext();
@@ -39,6 +40,10 @@ const UserContext = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const logOut = () => {
+    signOut(auth);
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -56,6 +61,7 @@ const UserContext = ({ children }) => {
     googleLogin,
     userSignIn,
     gitHubLogIn,
+    logOut,
   };
   return (
     <>
