@@ -1,11 +1,12 @@
 import React from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/UserContext";
 
 const Register = () => {
   const { createUser, updateUserProfile, googleLogin, gitHubLogIn } =
     useContext(AuthContext);
+    const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,6 +20,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         form.reset();
+        navigate('/')
         handleUpdateUserProfile(name, photoURL);
       })
       .catch((error) => {
@@ -39,6 +41,7 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
+        navigate('/')
       })
       .catch((error) => {
         console.error(error.message);
@@ -49,6 +52,7 @@ const Register = () => {
     gitHubLogIn()
       .then((result) => {
         const user = result.user;
+        navigate('/')
       })
       .catch((error) => {
         console.error(error.message);

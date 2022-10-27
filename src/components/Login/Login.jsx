@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/UserContext";
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const { googleLogin, userSignIn, gitHubLogIn } = useContext(AuthContext);
@@ -19,6 +20,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         navigate(from, { replace: true });
+        toast.success("Login successful");
         form.reset();
       })
       .catch((error) => {
@@ -31,6 +33,7 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
+        toast.success("Login successful");
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -42,6 +45,7 @@ const Login = () => {
     gitHubLogIn()
       .then((result) => {
         const user = result.user;
+        toast.success("Login successful");
         navigate(from, { replace: true });
       })
       .catch((error) => {
