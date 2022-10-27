@@ -1,10 +1,7 @@
 import React from "react";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/UserContext";
 
 const Home = () => {
-  const user = useContext(AuthContext)
   return (
     <div>
       <section className="relative bg-[url('/src/assets/background.jpg')] bg-cover bg-center bg-no-repeat">
