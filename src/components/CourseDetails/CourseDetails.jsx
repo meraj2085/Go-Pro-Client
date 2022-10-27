@@ -18,16 +18,17 @@ const CourseDetails = () => {
           <div className="flex justify-between">
             <h2 className="card-title">{name}</h2>
 
-            <Pdf targetRef={ref} filename="code-example.pdf">
-              {({ toPdf }) => <button onClick={toPdf}>Generador de Pdf</button>}
+            <Pdf targetRef={ref} x={10} y={10} filename="code-example.pdf">
+              {({ toPdf }) => (
+                <button
+                  onClick={toPdf}
+                  type="button"
+                  className="px-4 text-2xl py-2 font-semibold border rounded-full border-gray-800 text-gray-800"
+                >
+                  <FaCloudDownloadAlt />
+                </button>
+              )}
             </Pdf>
-
-            <button
-              type="button"
-              className="px-4 text-2xl py-2 font-semibold border rounded-full border-gray-800 text-gray-800"
-            >
-              <FaCloudDownloadAlt />
-            </button>
           </div>
           <p>{details}</p>
           <p className="text-lg">Price: ${price}</p>
