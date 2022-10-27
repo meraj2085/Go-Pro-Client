@@ -14,12 +14,12 @@ const UserProfile = () => {
 
   return (
     <div>
-      <div class="mx-auto right-0 my-48 w-60">
-        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-          <div class="text-center p-6 bg-gray-800 border-b">
+      <div className="mx-auto right-0 my-48 w-60">
+        <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div className="text-center p-6 bg-gray-800 border-b">
             {user?.photoURL ? (
               <img
-                class="h-24 w-24 text-white rounded-full mx-auto"
+                className="h-24 w-24 text-white rounded-full mx-auto"
                 width="32"
                 height="32"
                 src={user.photoURL}
@@ -29,7 +29,7 @@ const UserProfile = () => {
               <svg
                 aria-hidden="true"
                 role="img"
-                class="h-24 w-24 text-white rounded-full mx-auto"
+                className="h-24 w-24 text-white rounded-full mx-auto"
                 width="32"
                 height="32"
                 preserveAspectRatio="xMidYMid meet"
@@ -41,13 +41,15 @@ const UserProfile = () => {
                 ></path>
               </svg>
             )}
-            <p class="pt-2 text-lg font-semibold text-gray-50">
+            <p className="pt-2 text-lg font-semibold text-gray-50">
               {user?.displayName ? user?.displayName : "No name found"}
             </p>
-            <p class="text-sm text-gray-100">{user?.email ? user?.email : "No email found"}</p>
-            <div class="mt-5">
+            <p className="text-sm text-gray-100">
+              {user?.email ? user?.email : "No email found"}
+            </p>
+            <div className="mt-5">
               <button onClick={handleLogOut}>
-                <p class="border rounded-full py-2 px-4 text-xs font-semibold text-gray-100">
+                <p className="border rounded-full py-2 px-4 text-xs font-semibold text-gray-100">
                   Logout
                 </p>
               </button>
