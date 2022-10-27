@@ -43,7 +43,7 @@ const Header = () => {
           </div>
           <div className="hidden xl:flex items-center space-x-5">
             {user?.uid ? (
-              <Link to="/user">
+              <Link to="/userProfile">
                 <img
                   className="h-8 w-8 rounded-[50%]"
                   src={user.photoURL}
