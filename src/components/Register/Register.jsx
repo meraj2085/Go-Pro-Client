@@ -74,7 +74,7 @@ const Register = () => {
             >
               <div className="space-y-1 text-sm">
                 <label htmlFor="email" className="block text-gray-600">
-                  Name
+                  Full Name
                 </label>
                 <input
                   type="text"
