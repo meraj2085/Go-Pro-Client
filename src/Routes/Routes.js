@@ -23,6 +23,10 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/home",
+        element: <Home></Home>,
+      },
+      {
         path: "/courses",
         loader: () => fetch("https://go-pro-server.vercel.app/courses"),
         element: <Courses></Courses>,

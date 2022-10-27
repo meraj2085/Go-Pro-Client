@@ -6,80 +6,89 @@ import logo from "../../assets/goProLogo.png";
 import { useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 
-const Navbar = () => {
+const Header = () => {
+  const { user } = useContext(AuthContext);
+  const [color, setColor] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   let activeStyle = {
-    color: '#9333ea',
+    color: "#9333ea",
   };
+
+  const handleToggle = () => {
+    setColor(!color);
+  };
+
   return (
-    <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-      <div className="relative flex items-center justify-between">
-        <NavLink
-          to="/"
-          aria-label="Smart Home"
-          title="Smart Home"
-          className="inline-flex items-center"
-        >
-          <img className="w-[50px]" src={logo} alt="" />
-          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-            Quick Quiz
-          </span>
-        </NavLink>
-        <ul className="flex items-center hidden space-x-8 lg:flex">
-          <li>
-            <NavLink
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              to="/home"
-              aria-label="Home"
-              title="Home"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+    <div>
+      <header className="p-4 bg-gray-900 text-white">
+        <div className="container relative flex justify-between mx-auto px-5 py-1">
+          <div className="flex">
+            <img className="w-10 h-12 sm:h-9" src={logo} alt="" />
+            <p
+              rel="noopener noreferrer"
+              aria-label="Back to homepage"
+              className="flex items-center text-2xl"
             >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              to="/statistics"
-              aria-label="Statistics"
-              title="Statistics"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+              Go Pro
+            </p>
+          </div>
+          <div className="items-center flex-shrink-0 hidden lg:flex">
+            <Link to="/">
+              <button className="self-center rounded px-5 text-xl hover:text-purple-600">
+                Home
+              </button>
+            </Link>
+            <Link to="/courses">
+              <button className="self-center rounded px-5 text-xl hover:text-purple-600">
+                Courses
+              </button>
+            </Link>
+            <Link to="/faq">
+              <button className="self-center rounded px-5 text-xl hover:text-purple-600">
+                FAQ
+              </button>
+            </Link>
+            <Link to="/blog">
+              <button className="self-center rounded px-5 text-xl hover:text-purple-600">
+                Blog
+              </button>
+            </Link>
+            <button className="text-xl" onClick={handleToggle}>
+              {color ? <FaMoon /> : <FaSun />}
+            </button>
+          </div>
+          <div className="hidden xl:flex items-center space-x-5">
+            {user?.uid ? (
+              <Link to="/userProfile">
+                <img
+                  className="h-8 w-8 rounded-[50%]"
+                  title={user?.displayName}
+                  src={user.photoURL}
+                  alt=""
+                />
+              </Link>
+            ) : (
+              <Link to="/login">
+                <button className="self-center rounded px-5 text-xl hover:text-purple-600">
+                  Login
+                </button>
+              </Link>
+            )}
+          </div>
+          <button className="p-4 lg:hidden" onClick={() => setIsMenuOpen(true)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6 text-gray-800"
             >
-              Statistics
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              to="/blogs"
-              aria-label="Blogs"
-              title="Blogs"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-            >
-              Blogs
-            </NavLink>
-          </li>
-        </ul>
-        <div className="lg:hidden">
-          <button
-            aria-label="Open Menu"
-            title="Open Menu"
-            className="p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
-            onClick={() => setIsMenuOpen(true)}
-          >
-            <svg className="w-5 text-gray-600" viewBox="0 0 24 24">
               <path
-                fill="currentColor"
-                d="M23,13H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,13,23,13z"
-              />
-              <path
-                fill="currentColor"
-                d="M23,6H1C0.4,6,0,5.6,0,5s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,6,23,6z"
-              />
-              <path
-                fill="currentColor"
-                d="M23,20H1c-0.6,0-1-0.4-1-1s0.4-1,1-1h22c0.6,0,1,0.4,1,1S23.6,20,23,20z"
-              />
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
             </svg>
           </button>
           {isMenuOpen && (
@@ -135,12 +144,12 @@ const Navbar = () => {
                         style={({ isActive }) =>
                           isActive ? activeStyle : undefined
                         }
-                        to="/statistics"
-                        aria-label="Statistics"
-                        title="Statistics"
+                        to="/courses"
+                        aria-label="Courses"
+                        title="Courses"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                       >
-                        Statistics
+                        Courses
                       </NavLink>
                     </li>
                     <li>
@@ -148,7 +157,20 @@ const Navbar = () => {
                         style={({ isActive }) =>
                           isActive ? activeStyle : undefined
                         }
-                        to="/blogs"
+                        to="/faq"
+                        aria-label="faq"
+                        title="faq"
+                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                      >
+                        FAQ
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        style={({ isActive }) =>
+                          isActive ? activeStyle : undefined
+                        }
+                        to="/blog"
                         aria-label="Blogs"
                         title="BLogs"
                         className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
@@ -162,8 +184,9 @@ const Navbar = () => {
             </div>
           )}
         </div>
-      </div>
+      </header>
     </div>
   );
 };
-export default Navbar;
+
+export default Header;
