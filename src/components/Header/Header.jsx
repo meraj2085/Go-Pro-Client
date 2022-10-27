@@ -92,7 +92,7 @@ const Header = () => {
             </svg>
           </button>
           {isMenuOpen && (
-            <div className="absolute top-0 left-0 w-full z-10">
+            <div className="absolute top-0 left-0 w-full z-10 sm:hidden block">
               <div className="p-5 bg-white border rounded shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div>
@@ -177,6 +177,32 @@ const Header = () => {
                       >
                         Blogs
                       </NavLink>
+                    </li>
+                    <li>
+                      <div className="flex justify-between">
+                        <button
+                          className="text-xl text-gray-700"
+                          onClick={handleToggle}
+                        >
+                          {color ? <FaMoon /> : <FaSun />}
+                        </button>
+                        {user?.uid ? (
+                          <Link to="/userProfile">
+                            <img
+                              className="h-8 w-8 rounded-[50%]"
+                              title={user?.displayName}
+                              src={user.photoURL}
+                              alt=""
+                            />
+                          </Link>
+                        ) : (
+                          <Link to="/login">
+                            <button className="self-center rounded px-5 text-xl text-gray-700 hover:text-purple-600">
+                              Login
+                            </button>
+                          </Link>
+                        )}
+                      </div>
                     </li>
                   </ul>
                 </nav>
