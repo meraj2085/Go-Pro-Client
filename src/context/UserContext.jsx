@@ -12,15 +12,17 @@ import {
   signOut,
 } from "firebase/auth";
 
-export const AuthContext = createContext();
 const auth = getAuth(app);
+export const AuthContext = createContext();
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -29,24 +31,29 @@ const UserContext = ({ children }) => {
   };
 
   const googleLogin = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   const gitHubLogIn = () => {
+    setLoading(true);
     return signInWithPopup(auth, githubProvider);
   };
 
   const userSignIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const logOut = () => {
+    setLoading(true);
     signOut(auth);
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
 
     return () => {
@@ -62,6 +69,7 @@ const UserContext = ({ children }) => {
     userSignIn,
     gitHubLogIn,
     logOut,
+    loading,
   };
   return (
     <>

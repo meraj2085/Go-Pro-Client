@@ -8,6 +8,7 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import UserProfile from "../components/UserProfile/UserProfile";
 import Main from "../layouts/Main";
+import PrivateRoute from "../layouts/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -34,7 +35,11 @@ export const router = createBrowserRouter([
         path: "/courses/checkout/:id",
         loader: ({ params }) =>
           fetch(`https://go-pro-server.vercel.app/courses/${params.id}`),
-        element: <Checkout></Checkout>,
+        element: (
+          <PrivateRoute>
+            <Checkout></Checkout>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

@@ -18,7 +18,7 @@ const CourseDetails = () => {
           <div className="flex justify-between">
             <h2 className="card-title">{name}</h2>
 
-            <Pdf targetRef={ref} x={10} y={10} filename="code-example.pdf">
+            <Pdf targetRef={ref} filename="code-example.pdf">
               {({ toPdf }) => (
                 <button
                   onClick={toPdf}

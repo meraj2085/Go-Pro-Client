@@ -18,7 +18,6 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
         form.reset();
         handleUpdateUserProfile(name, photoURL);
       })
@@ -40,7 +39,6 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
-        console.log(user);
       })
       .catch((error) => {
         console.error(error.message);
@@ -51,7 +49,6 @@ const Register = () => {
     gitHubLogIn()
       .then((result) => {
         const user = result.user;
-        console.log(user);
       })
       .catch((error) => {
         console.error(error.message);
