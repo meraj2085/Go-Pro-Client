@@ -14,7 +14,7 @@ const UserProfile = () => {
 
   return (
     <div>
-      <div class="mx-auto right-0 mt-44 w-60">
+      <div class="mx-auto right-0 my-48 w-60">
         <div class="bg-white rounded-lg overflow-hidden shadow-lg">
           <div class="text-center p-6 bg-gray-800 border-b">
             {user?.photoURL ? (

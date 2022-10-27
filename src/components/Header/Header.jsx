@@ -47,6 +47,7 @@ const Header = () => {
               <Link to="/userProfile">
                 <img
                   className="h-8 w-8 rounded-[50%]"
+                  title={user?.displayName}
                   src={user.photoURL}
                   alt=""
                 />
