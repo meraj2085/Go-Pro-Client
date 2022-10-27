@@ -4,8 +4,8 @@ This project is created based on online education. Here they teach web developme
 
 ## Live links
 
-Live client side link: 
-Live server side link:
+- Live client side link: https://go-pro-9a816.web.app/
+- Live server side link: https://go-pro-server.vercel.app
 
 ### `Description`
 
