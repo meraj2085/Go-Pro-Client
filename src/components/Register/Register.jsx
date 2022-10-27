@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/UserContext";
 
 const Register = () => {
-  const { createUser, updateUserProfile, googleLogin } =
+  const { createUser, updateUserProfile, googleLogin, gitHubLogIn } =
     useContext(AuthContext);
 
   const handleSubmit = (event) => {
@@ -38,6 +38,17 @@ const Register = () => {
 
   const handleGoogleLogin = () => {
     googleLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
+
+  const handleGitHubLogin = () => {
+    gitHubLogIn()
       .then((result) => {
         const user = result.user;
         console.log(user);
@@ -138,6 +149,7 @@ const Register = () => {
                 </svg>
               </button>
               <button
+                onClick={handleGitHubLogin}
                 aria-label="Log in with GitHub"
                 className="p-3 rounded-sm"
               >
