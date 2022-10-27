@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/UserContext";
 import toast from 'react-hot-toast';
+import { useState } from "react";
 
 const Login = () => {
   const { googleLogin, userSignIn, gitHubLogIn } = useContext(AuthContext);
+  const [error, setError] = useState(null)
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -21,11 +23,12 @@ const Login = () => {
         const user = result.user;
         navigate(from, { replace: true });
         toast.success("Login successful");
+        setError(null)
         form.reset();
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        setError(errorMessage);
       });
   };
 
@@ -92,6 +95,10 @@ const Login = () => {
                   <a rel="noopener noreferrer" href="#">
                     Forgot Password?
                   </a>
+                </div>
+                <div className="text-red-600">
+                  <p>{error === 'Firebase: Error (auth/user-not-found).' && 'User Not Found'}</p>
+                  <p>{error === 'Firebase: Error (auth/wrong-password).' && "Wrong password"}</p>
                 </div>
               </div>
               <button
