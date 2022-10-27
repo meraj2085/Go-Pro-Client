@@ -1,4 +1,5 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, parsePath } from "react-router-dom";
+import CourseDetails from "../components/CourseDetails/CourseDetails";
 import Courses from "../components/Courses/Courses";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
@@ -16,9 +17,15 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: '/courses',
-        loader: ()=>fetch("https://go-pro-server.vercel.app/courses"),
-        element: <Courses></Courses>
+        path: "/courses",
+        loader: () => fetch("https://go-pro-server.vercel.app/courses"),
+        element: <Courses></Courses>,
+      },
+      {
+        path: "/courses/:id",
+        loader: ({ params }) =>
+          fetch(`https://go-pro-server.vercel.app/courses/${params.id}`),
+        element: <CourseDetails></CourseDetails>,
       },
       {
         path: "/login",

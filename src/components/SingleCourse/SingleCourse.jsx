@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SingleCourse = ({ course }) => {
   const { id, name, picture, details } = course;
@@ -21,12 +22,14 @@ const SingleCourse = ({ course }) => {
               )}
             </p>
           </div>
-          <button
-            type="button"
-            className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-purple-600 text-gray-50"
-          >
-            Details
-          </button>
+          <Link to={`/courses/${id}`}>
+            <button
+              type="button"
+              className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-purple-600 text-gray-50"
+            >
+              Details
+            </button>
+          </Link>
         </div>
       </div>
     </div>
