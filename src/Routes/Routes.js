@@ -1,4 +1,4 @@
-import { createBrowserRouter, parsePath } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import CourseDetails from "../components/CourseDetails/CourseDetails";
 import Courses from "../components/Courses/Courses";
 import Home from "../components/Home/Home";
