@@ -2,15 +2,16 @@ import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/UserContext";
+import logo from '../../assets/goProLogo.png'
 
 const Header = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
   return (
     <div>
       <header className="p-4 bg-gray-900 text-white">
         <div className="container flex justify-between mx-auto px-5 py-1">
-          <div>
+          <div className="flex">
+            <img className="w-10 h-12 sm:h-9" src={logo} alt="" />
             <p
               rel="noopener noreferrer"
               aria-label="Back to homepage"
