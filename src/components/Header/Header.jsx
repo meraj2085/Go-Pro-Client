@@ -39,12 +39,12 @@ const Header = () => {
                 Courses
               </button>
             </Link>
-            <Link to="/about">
+            <Link to="/faq">
               <button className="self-center rounded px-5 text-xl hover:text-purple-600">
                 FAQ
               </button>
             </Link>
-            <Link to="/pricing">
+            <Link to="/blog">
               <button className="self-center rounded px-5 text-xl hover:text-purple-600">
                 Blog
               </button>
