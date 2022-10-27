@@ -24,7 +24,7 @@ const Home = () => {
 
             <div className="mt-8 flex flex-wrap gap-4 text-center">
               <Link
-                to="#"
+                to="/courses"
                 className="block w-full rounded bg-rose-600 px-12 py-3 text-lg font-medium text-white shadow hover:bg-rose-700 focus:outline-none active:bg-rose-500 sm:w-auto"
               >
                 Our Courses

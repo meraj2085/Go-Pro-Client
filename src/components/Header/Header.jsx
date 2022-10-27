@@ -26,7 +26,7 @@ const Header = () => {
                 Home
               </button>
             </Link>
-            <Link to="/contact">
+            <Link to="/courses">
               <button className="self-center rounded px-5 text-xl hover:text-purple-600">
                 Courses
               </button>
