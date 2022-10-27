@@ -41,9 +41,9 @@ const Header = () => {
             <Link to="/user">
               <img className="h-8 w-8 rounded-[50%]" src="/" alt="" />
             </Link>
-            <Link to="/pricing">
+            <Link to="/login">
               <button className="self-center rounded px-5 text-xl hover:text-purple-600">
-                Blog
+                Login
               </button>
             </Link>
           </div>

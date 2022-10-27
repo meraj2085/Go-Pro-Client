@@ -82,13 +82,13 @@ const Login = () => {
         </div>
         <p className="text-xs text-center sm:px-6 text-gray-600">
           Don't have an account?
-          <a
+          <Link
             rel="noopener noreferrer"
-            href="#"
+            to="/register"
             className="underline text-gray-800"
           >
             Register
-          </a>
+          </Link>
         </p>
       </div>
     </div>
