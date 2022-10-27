@@ -2,22 +2,23 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">GoPro</Navbar.Brand>
+          <Navbar.Brand>GoPro</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">Courses</Nav.Link>
-              <Nav.Link href="#pricing">FAQ</Nav.Link>
-              <Nav.Link href="#blog">Blog</Nav.Link>
+              <Link to="#features">Courses</Link>
+              <Link to="#pricing">FAQ</Link>
+              <Link to='/login'>Blog</Link>
             </Nav>
             <Nav>
-              <Nav.Link href="/login">Login</Nav.Link>
+              <Link to="/login">Login</Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
