@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/UserContext";
@@ -6,7 +6,8 @@ import { AuthContext } from "../../context/UserContext";
 const Register = () => {
   const { createUser, updateUserProfile, googleLogin, gitHubLogIn } =
     useContext(AuthContext);
-    const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,11 +21,13 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         form.reset();
-        navigate('/')
+        navigate("/");
+        setError(null);
         handleUpdateUserProfile(name, photoURL);
       })
       .catch((error) => {
-        console.error(error.message);
+        setError(error.message);
+        console.log(error.message)
       });
   };
 
@@ -41,7 +44,7 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
-        navigate('/')
+        navigate("/");
       })
       .catch((error) => {
         console.error(error.message);
@@ -52,16 +55,16 @@ const Register = () => {
     gitHubLogIn()
       .then((result) => {
         const user = result.user;
-        navigate('/')
+        navigate("/");
       })
       .catch((error) => {
-        console.error(error.message);
+        setError(error.message);
       });
   };
 
   return (
     <div>
-      <section className="dark:bg-gray-900">
+      <section className="dark:bg-gray-900 my-10">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-200 text-gray-800">
             <h1 className="text-2xl font-bold text-center">Register</h1>
@@ -120,6 +123,10 @@ const Register = () => {
                   placeholder="Image URL"
                   className="w-full px-4 py-3 rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-purple-600"
                 />
+              </div>
+              <div className="text-red-500">
+                <p>{error === 'Firebase: Error (auth/email-already-in-use).' && "Email already in use"}</p>
+                <p>{error === 'Firebase: Password should be at least 6 characters (auth/weak-password).' && 'Password must be atleast 6 characters long.'}</p>
               </div>
               <button
                 type="submit"
