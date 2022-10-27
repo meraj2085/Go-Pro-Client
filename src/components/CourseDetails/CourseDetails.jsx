@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { FaCloudDownloadAlt } from "react-icons/fa";
 
 const CourseDetails = () => {
   const course = useLoaderData();
@@ -11,7 +12,15 @@ const CourseDetails = () => {
           <img src={picture} alt="Album" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{name}</h2>
+          <div className="flex justify-between">
+            <h2 className="card-title">{name}</h2>
+            <button
+              type="button"
+              className="px-4 text-2xl py-2 font-semibold border rounded-full border-gray-800 text-gray-800"
+            >
+              <FaCloudDownloadAlt />
+            </button>
+          </div>
           <p>{details}</p>
           <p className="text-lg">Price: ${price}</p>
           <Link to={`/courses/checkout/${id}`}>
