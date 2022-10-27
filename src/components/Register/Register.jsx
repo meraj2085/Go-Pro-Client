@@ -1,14 +1,49 @@
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/UserContext";
 
 const Register = () => {
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoURL = form.imageUrl.value;
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        handleUpdateUserProfile(name, photoURL);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = { displayName: name, photoURL: photoURL };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div>
       <section className="dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full max-w-md p-8 space-y-3 rounded-xl bg-gray-200 text-gray-800">
             <h1 className="text-2xl font-bold text-center">Register</h1>
-            <form className="space-y-6 ng-untouched ng-pristine ng-valid">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6 ng-untouched ng-pristine ng-valid"
+            >
               <div className="space-y-1 text-sm">
                 <label htmlFor="email" className="block text-gray-600">
                   Name
@@ -120,7 +155,7 @@ const Register = () => {
                 className="underline text-gray-800"
                 type="submit"
               >
-                <Link to='/login'>Login</Link>
+                <Link to="/login">Login</Link>
               </button>
             </p>
           </div>
