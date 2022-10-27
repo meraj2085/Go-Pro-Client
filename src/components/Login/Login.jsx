@@ -15,7 +15,6 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         form.reset();
-        console.log(user);
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -27,7 +26,6 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         const user = result.user;
-        console.log(user);
       })
       .catch((error) => {
         console.error(error.message);

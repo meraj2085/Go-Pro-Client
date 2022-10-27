@@ -1,7 +1,11 @@
 import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/UserContext";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div>
       <header className="p-4 bg-gray-900 text-white">
@@ -38,14 +42,21 @@ const Header = () => {
             </Link>
           </div>
           <div className="hidden xl:flex items-center space-x-5">
-            <Link to="/user">
-              <img className="h-8 w-8 rounded-[50%]" src="/" alt="" />
-            </Link>
-            <Link to="/login">
-              <button className="self-center rounded px-5 text-xl hover:text-purple-600">
-                Login
-              </button>
-            </Link>
+            {user?.uid ? (
+              <Link to="/user">
+                <img
+                  className="h-8 w-8 rounded-[50%]"
+                  src={user.photoURL}
+                  alt=""
+                />
+              </Link>
+            ) : (
+              <Link to="/login">
+                <button className="self-center rounded px-5 text-xl hover:text-purple-600">
+                  Login
+                </button>
+              </Link>
+            )}
           </div>
           <button className="p-4 lg:hidden">
             <svg
