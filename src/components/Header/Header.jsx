@@ -3,9 +3,17 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/UserContext";
 import logo from '../../assets/goProLogo.png'
+import { useState } from "react";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const Header = () => {
   const { user } = useContext(AuthContext);
+  const [color, setColor] = useState(true)
+
+  const handleToggle = ()=>{
+    setColor(!color)
+  }
+
   return (
     <div>
       <header className="p-4 bg-gray-900 text-white">
@@ -41,6 +49,7 @@ const Header = () => {
                 Blog
               </button>
             </Link>
+            <button className="text-xl" onClick={handleToggle}>{color ? <FaMoon/> : <FaSun/>}</button>
           </div>
           <div className="hidden xl:flex items-center space-x-5">
             {user?.uid ? (
