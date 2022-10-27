@@ -8,7 +8,7 @@ const Courses = () => {
   return (
     <div>
       <div className="flex">
-        <div className="flex-none min-h-screen w-1/4 hidden sm:block bg-slate-200">
+        <div className="flex-none min-h-screen w-1/4 hidden sm:block bg-slate-200 px-10 pt-16">
           <LeftSideNav></LeftSideNav>
         </div>
         <div className="grow grid lg:grid-cols-3 grid-cols-1 my-10 mx-10 gap-10">
