@@ -1,20 +1,21 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { FaPaypal, FaCcVisa, FaMoneyCheckAlt } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 const Checkout = () => {
   const course = useLoaderData();
+  const navigate = useNavigate();
   const { name, picture, price } = course;
   const handleBuy = () => {
+     navigate('/')
     toast.success("Purchase successful", { duration: 4000 });
   };
 
   return (
     <div className="mx-20">
       <div className="h-screen flex flex-col gap-4 items-center justify-center bg-white">
-        <a
-          href="#0"
+        <div
           className="w-[30rem] border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50"
         >
           <p className="bg-sky-500 w-fit px-4 py-1 text-sm font-bold text-white rounded-tl-lg rounded-br-xl">
@@ -55,7 +56,7 @@ const Checkout = () => {
               Buy
             </button>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   );
